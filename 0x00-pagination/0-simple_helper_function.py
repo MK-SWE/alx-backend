@@ -4,7 +4,7 @@
 """
 
 
-def index_range(page, page_size) :
+def index_range(page: int, page_size: int) -> tuple:
     """
     that takes two integer arguments page and page_size.
     The function should return a tuple of size two containing
