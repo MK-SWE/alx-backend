@@ -19,7 +19,7 @@ class LIFOCache(BaseCaching):
         """insert into cache"""
         if key is None or item is None:
             return
-        if len(self.cache_data) +1 > self.MAX_ITEMS:
+        if len(self.cache_data) + 1 > self.MAX_ITEMS:
             poped, _ = self.cache_data.popitem()
             print(f"DISCARD: {poped}")
         self.cache_data[key] = item
