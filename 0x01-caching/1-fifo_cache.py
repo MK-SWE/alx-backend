@@ -2,7 +2,8 @@
 """
     Basic dictionary caching
 """
-BaseCaching = __import__('base_caching').BaseCaching
+from collections import OrderedDict
+from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
@@ -12,6 +13,7 @@ class FIFOCache(BaseCaching):
     def __init__(self):
         """The init method"""
         super().__init__()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """insert into cache"""
@@ -19,8 +21,8 @@ class FIFOCache(BaseCaching):
             return
         self.cache_data[key] = item
         if len(self.cache_data) > self.MAX_ITEMS:
-            dis = self.cache_data.pop(list(self.cache_data.keys())[0])
-            print(f"DISCARD: {dis}")
+            poped, _ = self.cache_data.popitem(False)
+            print(f"DISCARD: {poped}")
 
     def get(self, key):
         """Retrieve the cached data"""
