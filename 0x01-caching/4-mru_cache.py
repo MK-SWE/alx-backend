@@ -22,6 +22,6 @@ class MRUCache(BaseCaching):
 
     def get(self, key):
         """Retrieve the cached data"""
-        if key is not None and key in self.cache_data:
-            self.cache_data.move_to_end(key, last=False)
-            return self.cache_data.get(key, None)
+        if key is None:
+            return None
+        return self.cache_data.get(key)
