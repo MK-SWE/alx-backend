@@ -24,11 +24,9 @@ class LRUCache(BaseCaching):
             poped = next(iter(self.cache_data))
             del self.cache_data[poped]
             print(f"DISCARD: {poped}")
-        self.cache_data[key] = item
 
     def get(self, key):
         """Retrieve the cached data"""
         if key is not None and key in self.cache_data:
             self.cache_data.move_to_end(key, last=False)
             return self.cache_data.get(key, None)
-
