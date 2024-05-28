@@ -10,13 +10,13 @@ from flask import (
 from flask_babel import Babel
 
 
-class Config():
+class Config(object):
     """
         config the babel object
     """
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
@@ -25,18 +25,18 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale():
     """
         Set the best max locale
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route("/", strict_slashes=False)
-def home() -> str:
+@app.route('/', strict_slashes=False)
+def index() -> str:
     """Render Basic Home page"""
-    return render_template("1-index.html")
+    return render_template('2-index.html')
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port="5000", host="0.0.0.0", debug=True)
