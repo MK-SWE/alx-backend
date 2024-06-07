@@ -29,16 +29,18 @@ def get_locale():
     """
         Set the best match locale
     """
-    langs = request.args.get('locale')
-    if langs in app.config['LANGUAGES']:
-        return langs
+    loc = request.args.get('locale')
+    if loc in app.config['LANGUAGES']:
+        return loc
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', strict_slashes=False)
 def index() -> str:
-    """Render Basic Home page"""
-    return render_template('2-index.html')
+    """
+    Handles / route
+    """
+    return render_template('4-index.html')
 
 
 if __name__ == "__main__":
