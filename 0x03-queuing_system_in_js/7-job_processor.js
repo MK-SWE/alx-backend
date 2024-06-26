@@ -4,7 +4,7 @@ const queue = kue.createQueue();
 
 const blackList = ['4153518780', '4153518781'];
 
-function sendNotification(phoneNumber, message, job, done) {
+function sendNotification (phoneNumber, message, job, done) {
   job.progress(0, 100);
   if (blackList.includes(phoneNumber)) {
     done(Error(`Phone number ${phoneNumber} is blacklisted`));

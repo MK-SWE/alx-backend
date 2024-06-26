@@ -31,7 +31,7 @@ describe('createPushNotificationsJobs', () => {
       {
         phoneNumber: '4153518781',
         message: 'This is your verification code: 4321'
-      },
+      }
     ];
     createPushNotificationsJobs(jobs, queue);
     expect(queue.testMode.jobs.length).to.equal(2);
